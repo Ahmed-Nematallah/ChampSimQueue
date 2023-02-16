@@ -1,0 +1,9 @@
+*.o
+*.d
+*.bak
+*.zip
+*.pdf
+*.7z
+
+bin/*
+results/*

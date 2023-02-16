@@ -1,0 +1,37 @@
+#include "cache.h"
+
+void CACHE::llc_initialize_replacement()
+{
+	srand(time(NULL));
+}
+
+// called on every cache hit and cache fill
+void CACHE::llc_update_replacement_state(uint32_t cpu, uint32_t set, uint32_t way, uint64_t full_addr, uint64_t ip, uint64_t victim_addr, uint32_t type, uint8_t hit, bool process_element)
+{
+
+}
+
+// find replacement victim
+uint32_t CACHE::llc_find_victim(uint32_t cpu, uint64_t instr_id, uint32_t set, const BLOCK *current_set, uint64_t ip, uint64_t full_addr, uint32_t type, bool process_element)
+{
+    /* don't modify this code or put anything above it;
+     * if there's an invalid block, we don't need to evict any valid ones */
+    // for (int way = 0; way < LLC_WAY; way++) {
+    //     if (current_set[way].valid == false) {
+    //         return way;
+    //     }
+    // }
+
+
+    // your eviction policy goes here
+
+	// Should I make it keep replacing invalid lines first, or should it be purely random? 
+	// Shouldn't make a difference TBH, especially after warmup
+	return random() % LLC_WAY;
+}
+
+// use this function to print out your own stats at the end of simulation
+void CACHE::llc_replacement_final_stats()
+{
+
+}
