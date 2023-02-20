@@ -143,3 +143,17 @@ void CACHE::llc_replacement_final_stats()
 {
 
 }
+
+uint32_t CACHE::llc_get_queue_latency(uint32_t set, uint32_t way, uint64_t full_addr, uint64_t ip, uint32_t type, uint8_t hit, uint8_t queue_latency_type) {
+    uint32_t ret = 0;
+
+    switch (queue_latency_type) {
+        case LLC_QUEUE_LATENCY_FILL     : ret = 3; break;
+        case LLC_QUEUE_LATENCY_WRITE    : ret = 3; break;
+        case LLC_QUEUE_LATENCY_READ     : ret = 2; break;
+        case LLC_QUEUE_LATENCY_PREFETCH : ret = 2; break;
+    }
+
+    return ret;
+}
+
