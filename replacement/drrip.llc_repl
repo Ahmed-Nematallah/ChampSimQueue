@@ -135,5 +135,16 @@ uint32_t CACHE::llc_find_victim(uint32_t cpu, uint64_t instr_id, uint32_t set, c
 // use this function to print out your own stats at the end of simulation
 void CACHE::llc_replacement_final_stats()
 {
+    uint32_t ret = 0;
 
+    switch (queue_latency_type) {
+        case LLC_QUEUE_LATENCY_FILL     : ret += 9; break;
+        case LLC_QUEUE_LATENCY_WRITE    : ret += 9; break;
+    }
+
+    if (!hit) {
+        ret += 6;
+    }
+
+    return ret;
 }
