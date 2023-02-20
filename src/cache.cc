@@ -1084,7 +1084,7 @@ void CACHE::operate()
 				bool added_to_queue = false;
 				for (uint64_t i = 0; i < queue_length; i++) {
 					if (queue_cycles[i] == 0) {
-						queue_cycles[i] = llc_get_queue_latency(set, 0, ip, full_Addr, queue_type, false, LLC_QUEUE_LATENCY_FILL);
+						queue_cycles[i] = queue_cycle_count;
 						queue_occupancy++;
 						added_to_queue = true;
 						break;
@@ -1117,7 +1117,7 @@ void CACHE::operate()
 				bool added_to_queue = false;
 				for (uint64_t i = 0; i < queue_length; i++) {
 					if (queue_cycles[i] == 0) {
-						queue_cycles[i] = llc_get_queue_latency(set, way, full_addr, ip, queue_type, 1, LLC_QUEUE_LATENCY_WRITE);
+						queue_cycles[i] = queue_cycle_count;
 						queue_occupancy++;
 						added_to_queue = true;
 						break;
@@ -1155,7 +1155,7 @@ void CACHE::operate()
 					bool added_to_queue = false;
 					for (uint64_t i = 0; i < queue_length; i++) {
 						if (queue_cycles[i] == 0) {
-							queue_cycles[i] = llc_get_queue_latency(set, way, full_addr, ip, queue_type, 1, LLC_QUEUE_LATENCY_READ);
+							queue_cycles[i] = queue_cycle_count;
 							queue_occupancy++;
 							added_to_queue = true;
 							break;
@@ -1195,7 +1195,7 @@ void CACHE::operate()
 					bool added_to_queue = false;
 					for (uint64_t i = 0; i < queue_length; i++) {
 						if (queue_cycles[i] == 0) {
-							queue_cycles[i] = llc_get_queue_latency(set, way, full_addr, ip, queue_type, 1, LLC_QUEUE_LATENCY_PREFETCH);
+							queue_cycles[i] = queue_cycle_count;
 							queue_occupancy++;
 							added_to_queue = true;
 							break;
